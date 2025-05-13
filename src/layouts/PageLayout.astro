@@ -16,10 +16,7 @@ const { title, description, hideHeader } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <Head
-      title={`${SITE.NAME} ${title ? `| ${title}` : ''}`}
-      description={description}
-    />
+    <Head title={`${SITE.NAME} ${title ? `| ${title}` : ''}`} description={description} />
   </head>
   <body>
     {!hideHeader && <Header />}

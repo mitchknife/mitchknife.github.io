@@ -10,9 +10,7 @@ import { HOME } from '@consts';
   <Container>
     <div class="space-y-16">
       <section class="mt-8 md:mt-32">
-        <h1 class="animate text-4xl font-semibold text-black dark:text-white">
-          Mitch Rosenburg
-        </h1>
+        <h1 class="animate text-4xl font-semibold text-black dark:text-white">Mitch Rosenburg</h1>
         <p class="animate my-2 font-mono">
           {
             '(Backend|Frontend|DevOps) Engineer|Code(r| Ninja)'
@@ -20,8 +18,7 @@ import { HOME } from '@consts';
               .map((punctuationOrWord) => (
                 <span
                   class={cn(
-                    !/[()|/]/.test(punctuationOrWord) &&
-                      'text-black/35 dark:text-white/35'
+                    !/[()|/]/.test(punctuationOrWord) && 'text-black/35 dark:text-white/35'
                   )}
                   set:html={punctuationOrWord}
                 />
@@ -32,9 +29,7 @@ import { HOME } from '@consts';
 
       <section class="animate">
         <p class="mt-8 text-2xl">
-          likes <strong class="text-black dark:text-white"
-            >solving problems</strong
-          >
+          likes <strong class="text-black dark:text-white">solving problems</strong>
           <br />often by
           <strong class="text-black dark:text-white">building things</strong>
         </p>

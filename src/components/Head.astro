@@ -61,9 +61,7 @@ const { title, description, image = '/nano.png' } = Astro.props;
   import type { TransitionBeforeSwapEvent } from 'astro:transitions/client';
   document.addEventListener('astro:before-swap', (e) =>
     [
-      ...(e as TransitionBeforeSwapEvent).newDocument.head.querySelectorAll(
-        'link[as="font"]'
-      ),
+      ...(e as TransitionBeforeSwapEvent).newDocument.head.querySelectorAll('link[as="font"]'),
     ].forEach((link) => link.remove())
   );
 </script>
@@ -98,13 +96,11 @@ const { title, description, image = '/nano.png' } = Astro.props;
       toggleTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
     });
 
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', (event) => {
-        if (localStorage.theme === 'system') {
-          toggleTheme(event.matches);
-        }
-      });
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+      if (localStorage.theme === 'system') {
+        toggleTheme(event.matches);
+      }
+    });
 
     document.addEventListener('scroll', onScroll);
   }
