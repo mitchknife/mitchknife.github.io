@@ -1,48 +1,56 @@
 ---
-import { getCollection } from 'astro:content';
 import Container from '@components/Container.astro';
 import PageLayout from '@layouts/PageLayout.astro';
 import Link from '@components/Link.astro';
-import { dateRange } from '@lib/utils';
-import { SITE, HOME, SOCIALS } from '@consts';
-import { Code } from 'astro:components';
-
-const allwork = (await getCollection('exp'))
-  .sort(
-    (a, b) =>
-      new Date(b.data.dateStart).valueOf() -
-      new Date(a.data.dateStart).valueOf()
-  )
-  .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
-
-const exp = await Promise.all(
-  allwork.map(async (item) => {
-    const { Content } = await item.render();
-    return { ...item, Content };
-  })
-);
+import { cn } from '@lib/utils';
+import { HOME } from '@consts';
 ---
 
-<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION} hideHeader>
   <Container>
     <div class="space-y-16">
-      <section class="space-y-2">
+      <section class="mt-8 md:mt-32">
         <h1 class="animate text-4xl font-semibold text-black dark:text-white">
-          Mitch Rosenburg:
+          Mitch Rosenburg
         </h1>
-        <Code
-          code={`/((Backend|Frontend|DevOps) Engineer|Code(r| Ninja))/`}
-          lang="js"
-          class="animate p-1"
-        />
-        <p class="animate text-xl">
-          I like to <strong class="text-black dark:text-white"
-            >solve problems</strong
-          >, which usually involves
-          <strong class="text-black dark:text-white">building things</strong>.
+        <p class="animate my-2 font-mono">
+          {
+            '(Backend|Frontend|DevOps) Engineer|Code(r| Ninja)'
+              .split(/([()|/])/)
+              .map((punctuationOrWord) => (
+                <span
+                  class={cn(
+                    !/[()|/]/.test(punctuationOrWord) &&
+                      'text-black/35 dark:text-white/35'
+                  )}
+                  set:html={punctuationOrWord}
+                />
+              ))
+          }
         </p>
       </section>
-      <section class="animate space-y-6">
+
+      <section class="animate">
+        <p class="mt-8 text-2xl">
+          likes <strong class="text-black dark:text-white"
+            >solving problems</strong
+          >
+          <br />often by
+          <strong class="text-black dark:text-white">building things</strong>
+        </p>
+      </section>
+
+      <section class="animate">
+        <p class="flex flex-wrap gap-2">
+          <Link href="/readme">Readme</Link>
+          <span>•</span>
+          <Link href="/experience">Experience</Link>
+          <span>•</span>
+          <Link href="/connect">Connect</Link>
+        </p>
+      </section>
+
+      <!-- <section class="animate space-y-6">
         <div class="flex flex-wrap items-center justify-between gap-y-2">
           <h5 class="font-semibold text-black dark:text-white">Experience</h5>
           <Link href="/exp"> See all experience </Link>
@@ -65,9 +73,9 @@ const exp = await Promise.all(
             ))
           }
         </ul>
-      </section>
+      </section> -->
 
-      <section class="animate space-y-4">
+      <!-- <section class="animate space-y-4">
         <h5 class="font-semibold text-black dark:text-white">Let's Connect</h5>
         <article>
           <p>
@@ -82,8 +90,7 @@ const exp = await Promise.all(
                 <Link
                   href={SOCIAL.HREF}
                   external
-                  aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
-                >
+                  aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
                   {SOCIAL.NAME}
                 </Link>
                 {'/'}
@@ -93,13 +100,12 @@ const exp = await Promise.all(
           <li class="line-clamp-1">
             <Link
               href={`mailto:${SITE.EMAIL}`}
-              aria-label={`Email ${SITE.NAME}`}
-            >
+              aria-label={`Email ${SITE.NAME}`}>
               {SITE.EMAIL}
             </Link>
           </li>
         </ul>
-      </section>
+      </section> -->
     </div>
   </Container>
 </PageLayout>

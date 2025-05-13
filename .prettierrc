@@ -4,6 +4,7 @@
   "trailingComma": "es5",
   "arrowParens": "always",
   "endOfLine": "auto",
+  "bracketSameLine": true,
   "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   "overrides": [
     {

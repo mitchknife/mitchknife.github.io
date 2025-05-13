@@ -1,6 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 
-const exp = defineCollection({
+const experience = defineCollection({
   type: 'content',
   schema: z.object({
     company: z.string(),
@@ -10,4 +10,4 @@ const exp = defineCollection({
   }),
 });
 
-export const collections = { exp };
+export const collections = { experience };

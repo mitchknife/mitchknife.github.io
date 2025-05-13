@@ -7,9 +7,10 @@ import { SITE } from '@consts';
 type Props = {
   title: string;
   description: string;
+  hideHeader?: boolean;
 };
 
-const { title, description } = Astro.props;
+const { title, description, hideHeader } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,7 +22,7 @@ const { title, description } = Astro.props;
     />
   </head>
   <body>
-    <Header />
+    {!hideHeader && <Header />}
     <main>
       <slot />
     </main>

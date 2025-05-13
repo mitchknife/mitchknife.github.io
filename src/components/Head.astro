@@ -120,7 +120,8 @@ const { title, description, image = '/nano.png' } = Astro.props;
   }
 
   function onScroll() {
-    if (window.scrollY > 0) {
+    console.log('scrolly', window.scrollY);
+    if (window.scrollY > 200) {
       document.documentElement.classList.add('scrolled');
     } else {
       document.documentElement.classList.remove('scrolled');
