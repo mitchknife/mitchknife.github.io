@@ -9,7 +9,19 @@ import { HOME } from '@consts';
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION} hideHeader>
   <Container>
     <div class="space-y-16">
-      <section class="mt-8 md:mt-32">
+      <section class="relative mt-8 sm:mt-32">
+        <div class="absolute right-0 top-[80px] w-[150px] sm:top-[-35px] sm:w-[220px]">
+          <img
+            src="MitchLinocut_BlackTransparent.png"
+            alt="Mitch Linocut"
+            class="hidden dark:block"
+          />
+          <img
+            src="MitchLinocut_WhiteTransparent.png"
+            alt="Mitch Linocut"
+            class="block dark:hidden"
+          />
+        </div>
         <h1 class="animate text-4xl font-semibold text-black dark:text-white">Mitch Rosenburg</h1>
         <p class="animate my-2 font-mono">
           {
