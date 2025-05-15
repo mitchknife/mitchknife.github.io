@@ -1,0 +1,21 @@
+---
+type Props = {
+  values: string[];
+  valueClass?: string;
+  separator?: string;
+  separatorClass?: string;
+};
+
+const { values, valueClass, separator, separatorClass } = Astro.props;
+---
+
+<>
+  {
+    values.map((value, i) => (
+      <>
+        {i > 0 ? <span class={separatorClass}>{separator ?? ', '}</span> : null}
+        <span class={valueClass}>{value}</span>
+      </>
+    ))
+  }
+</>
