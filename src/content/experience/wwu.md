@@ -7,7 +7,8 @@ tech:
   - Algorithms
   - Networking
   - OOP
-  - How to Google
+  - The Art of Googling
 ---
 
-At Western, my love for computers and programming was fanned into flame. 
+Yup, I went to school for this.
+
