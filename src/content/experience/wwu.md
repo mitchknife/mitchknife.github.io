@@ -10,5 +10,5 @@ tech:
   - The Art of Googling
 ---
 
-Yup, I went to school for this.
+Yup, I'm old school. I've got the piece of paper to prove it.
 
