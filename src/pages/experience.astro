@@ -31,7 +31,9 @@ const experience = await Promise.all(
               </div>
               <div class="text-sm">
                 <SeparatedList
-                  values={entry.data.tech}
+                  values={[...new Set(entry.data.tech.map((t) => t.split(':')[0]))].sort((a, b) =>
+                    a.localeCompare(b)
+                  )}
                   valueClass="text-black/35 dark:text-white/35"
                   separator=" | "
                 />

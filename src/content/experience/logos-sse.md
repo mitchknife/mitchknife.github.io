@@ -4,20 +4,25 @@ role: 'Senior Software Engineer'
 dateRange: '2015 => 2022'
 tech:
   - C#
-  - ASP.NET (WebApi)
+  - ASP.NET:2
   - netstandard
   - netcore
   - MySQL
+  - Node
   - React
   - Python
-  - TDD
-  - REST
-  - Elasticsearch
-  - RabbitMQ
-  - Jenkins
+  - TDD:2
+  - REST:2
+  - Elasticsearch:2
+  - RabbitMQ:2
+  - Jenkins:2
   - Docker
-  - PagerDuty
+  - PagerDuty:2
   - Azure
+  - Terraform
+  - Git
+  - TypeScript
+  - Powershell
 ---
 
 I led and contributed to development of new products and internal tools, owned features from idea through release, and mentored teammates along the way.

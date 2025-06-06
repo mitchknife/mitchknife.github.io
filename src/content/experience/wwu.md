@@ -6,7 +6,7 @@ tech:
   - Data Structures
   - Algorithms
   - Networking
-  - OOP
+  - C++
 ---
 
 I procured my piece of paper.

@@ -1,0 +1,88 @@
+---
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+
+// Calculate frequency of each tag
+const tagsWithFrequencies = tags.reduce(
+  (acc, tag) => {
+    const existing = acc.find((x) => x.name === tag);
+    if (existing) {
+      existing.freq++;
+    } else {
+      acc.push({ name: tag, freq: 1 });
+    }
+    return acc;
+  },
+  [] as { name: string; freq: number }[]
+);
+---
+
+<div class="relative w-full rounded-lg bg-transparent">
+  <div id="tagcloud" class="mx-auto flex h-[600px] w-full items-center justify-center"></div>
+</div>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/TagCloud@2.5.0/dist/TagCloud.min.js"></script>
+
+<script define:vars={{ tagsWithFrequencies }}>
+  function getFontWeight(freq) {
+    switch (freq) {
+      case 1:
+        return 200;
+      case 2:
+        return 400;
+      case 3:
+        return 600;
+      default:
+        return 800;
+    }
+  }
+
+  function getFontSize(freq) {
+    return `${Math.min(freq * 0.75 + 0.5, 3)}em`;
+  }
+
+  let tagCloud = null;
+  function initTagCloud() {
+    const container = document.getElementById('tagcloud');
+    if (!container) return;
+
+    // Create HTML strings with weights
+    const elements = tagsWithFrequencies.map(
+      (tag) =>
+        `<span class="font-mono" style="font-size: ${getFontSize(tag.freq)};font-weight: ${getFontWeight(tag.freq)}">${tag.name}</span>`
+    );
+
+    const options = {
+      radius: 350,
+      maxSpeed: 'normal',
+      initSpeed: 'slow',
+      direction: 135,
+      keep: true,
+      useContainerInlineStyles: false,
+      useItemInlineStyles: true,
+      useHTML: true,
+    };
+
+    tagCloud = window.TagCloud(container, elements, options);
+  }
+
+  function destroyTagCloud() {
+    try {
+      tagCloud?.destroy();
+    } catch {
+      // don't care
+    }
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    initTagCloud();
+  });
+
+  // Cleanup on unmount
+  document.addEventListener('astro:before-swap', () => {
+    destroyTagCloud();
+  });
+</script>

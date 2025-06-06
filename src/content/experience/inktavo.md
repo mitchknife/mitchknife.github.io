@@ -5,11 +5,13 @@ dateRange: '2022 => 2023'
 tech:
   - C#
   - ASP.NET
-  - Visual Basic (yikes!)
+  - Visual Basic
   - MySQL
-  - Testing
-  - QA
+  - TDD
   - Azure
+  - Git
+  - GH Actions
+  - CircleCI
 ---
 
 I was the first dev hire after a two-company merger. I was responsible for integrating the .NET team with the Rails team, establishing common workflows, and improving development practices.

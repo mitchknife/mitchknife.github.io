@@ -3,14 +3,20 @@ company: 'AllDrafts'
 role: 'Senior Software Engineer'
 dateRange: '2023 => Current'
 tech:
-  - Node
-  - Fastify
+  - Node:2
+  - Fastify:2
   - BullMQ
   - MySQL
-  - React
+  - React:2
   - Lexical
   - Remix
   - Fly.io
+  - Git
+  - GH Actions
+  - Docker:2
+  - Elasticsearch
+  - JavaScript
+  - TypeScript:2
 ---
 
 I currently work with a small, talented team building a new legal-tech document editor/generator. I handle everything from building the Node backend API to the React frontend app and maintaining deployments and integrations.
