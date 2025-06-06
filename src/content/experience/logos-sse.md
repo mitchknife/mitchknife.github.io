@@ -6,22 +6,23 @@ tech:
   - C#
   - ASP.NET (WebApi)
   - netstandard
+  - netcore
   - MySQL
   - React
   - Python
   - TDD
+  - REST
   - Elasticsearch
-  - Microservices
   - RabbitMQ
   - Jenkins
   - Docker
   - PagerDuty
   - Azure
-  - The Art of Administering Code Review
 ---
 
-As a Senior Software Engineer I became more **autonomous**, capable of designing, building, and deploying entire systems and APIs on my own. I provided technical expertise and contributions on all of our major APIs and features (Payments, Accounts, Auth, Commerce, Desktop). I **mentored interns and junior devs**, teaching them the ropes about coding (and sometimes just life). I led multiple, end-to-end, feature teams which had roadmaps, schedules, design support, and direct stakeholder interaction. I was also comfortable in the nebulous world where direction was less clear and where design support was less prevalent. 
+I led and contributed to development of new products and internal tools, owned features from idea through release, and mentored teammates along the way.
 
-- Worked on a team to create the **[Logos Web App](https://app.logos.com/tools/text-comparison?reference=bible%2Besv.64.1&resources=esv%2Cnasb95%2Cniv2011%2Cnrsv%2Ckjv1900&view=Verses)** (written in the early days of React), making our primary Bible Study tool available on the web for the first time.
-- Built and maintained an **API for handling online giving**. This involved interfacing with our **Payment Provider**, maintaining giving schedules, and creating a set of **embedded widgets** which customers could use on their websites.
-- Helped to formally structure our different web properties into **Microservices**. This involved building out a **messaging system** so the services could communicate in a less coupled way, and eventually migrating them all to Azure.
+- Built the first versions of the [Logos Web App](https://app.logos.com) (early React + Redux architecture)
+- Developed and maintained an API for online giving, including **payment provider integration** and giving schedules
+- Helped migrate monolith services to a **microservice architecture** using **message queuing** and Azure cloud hosting
+- **Mentored interns** during our summer internship program, helping them get the career boost I was given as an intern

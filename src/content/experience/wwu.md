@@ -7,9 +7,7 @@ tech:
   - Algorithms
   - Networking
   - OOP
-  - The Art of Googling
 ---
 
-
-I went to school for this. 👍
+I procured my piece of paper.
 
