@@ -1,13 +1,35 @@
 ---
 import Container from '@components/Container.astro';
 import Link from '@components/Link.astro';
+import { cn } from '@lib/utils';
 ---
 
-<header class="animate">
+<header class={cn('py-5 text-base')}>
   <Container>
-    <div class="flex flex-wrap justify-between gap-y-2">
+    <div class="flex items-center justify-between">
       <Link href="/" underline={false}>
-        <div class="font-semibold">mitch.rosenburg.us</div>
+        <div class="text-lg font-semibold">Mitch Rosenburg</div>
+      </Link>
+      <nav class="flex gap-1 text-sm">
+        <Link href="/experience">Experience</Link>
+        <span>•</span>
+        <Link href="/tech-tree">Tech Tree</Link>
+      </nav>
+    </div>
+  </Container>
+</header>
+<div
+  id="floating-header"
+  class={cn(
+    'animate py-3 text-sm text-black/35 dark:text-white/35',
+    'fixed left-0 right-0 z-50',
+    'bg-stone-200/25 dark:bg-stone-900/25',
+    'saturate-200 backdrop-blur-sm'
+  )}>
+  <Container>
+    <div class="flex justify-between">
+      <Link href="/" underline={false}>
+        <div class="font-semibold">MR</div>
       </Link>
       <nav class="flex gap-1">
         <Link href="/experience">exp</Link>
@@ -16,4 +38,43 @@ import Link from '@components/Link.astro';
       </nav>
     </div>
   </Container>
-</header>
+</div>
+<script is:inline>
+  (() => {
+    function init() {
+      const header = document.querySelector('header');
+      const headerHeight = header.getBoundingClientRect().height;
+
+      const floatingHeader = document.getElementById('floating-header');
+      const floatingHeaderHeight = floatingHeader.getBoundingClientRect().height;
+
+      function adjustFloatingHeader() {
+        const scrollTop = document.documentElement.scrollTop;
+        if (scrollTop > headerHeight) {
+          floatingHeader.style.top = `0px`;
+        } else {
+          floatingHeader.style.top = `-${floatingHeaderHeight}px`;
+        }
+      }
+
+      adjustFloatingHeader();
+
+      document.addEventListener('scroll', adjustFloatingHeader, { passive: true });
+      window.addEventListener('resize', adjustFloatingHeader, { passive: true });
+
+      return () => {
+        document.removeEventListener('scroll', adjustFloatingHeader);
+        window.removeEventListener('resize', adjustFloatingHeader);
+      };
+    }
+
+    let cleanup = null;
+    document.addEventListener('astro:page-load', () => {
+      cleanup = init();
+    });
+
+    document.addEventListener('astro:before-swap', () => {
+      cleanup?.();
+    });
+  })();
+</script>

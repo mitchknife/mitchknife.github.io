@@ -9,53 +9,29 @@ import EnvelopeSvg from './svgs/Envelope.astro';
 import MoonSvg from './svgs/Moon.astro';
 import DisplaySvg from './svgs/Display.astro';
 import BrightnessHigh from './svgs/BrightnessHigh.astro';
+import { cn } from '@lib/utils';
 
 const github = SOCIALS.find((SOCIAL) => SOCIAL.NAME === 'Github')!;
 const linkedin = SOCIALS.find((SOCIAL) => SOCIAL.NAME === 'Linkedin')!;
 ---
 
-<div id="bottom-toolbar" class="animate py-5 text-sm">
-  <Container>
-    <div class="flex items-center justify-between">
-      <div class="flex justify-center gap-4">
-        <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`} external>
-          <EnvelopeSvg class="size-[18px]" />
-        </Link>
-        <Link href={github.HREF} aria-label={`${SITE.NAME} on ${github.NAME}`} external>
-          <GithubSvg class="size-[18px]" />
-        </Link>
-        <Link href={linkedin.HREF} aria-label={`${SITE.NAME} on ${linkedin.NAME}`} external>
-          <LinkedinSvg class="size-[18px]" />
-        </Link>
-      </div>
-
-      <div class="flex justify-end gap-4">
-        <button
-          id="light-theme-button"
-          aria-label="Light theme"
-          class="transition-colors duration-300 ease-in-out hover:text-black hover:dark:text-white">
-          <BrightnessHigh class="size-[18px]" />
-        </button>
-        <button
-          id="dark-theme-button"
-          aria-label="Dark theme"
-          class="transition-colors duration-300 ease-in-out hover:text-black hover:dark:text-white">
-          <MoonSvg class="size-[18px]" />
-        </button>
-        <button
-          id="system-theme-button"
-          aria-label="System theme"
-          class="transition-colors duration-300 ease-in-out hover:text-black hover:dark:text-white">
-          <DisplaySvg class="size-[18px]" />
-        </button>
-      </div>
-    </div>
-  </Container>
-</div>
-
-<footer class="animate py-10 text-sm text-black/35 dark:text-white/35">
+<footer class={cn('py-10 text-sm text-black/35 dark:text-white/35')}>
   <Container>
     <div class="flex justify-between">
+      <div>
+        <h3 class="mb-2 font-bold">Extras Bits</h3>
+        <ul>
+          <li>
+            <Link
+              href="https://github.com/mitchknife/mitchknife.github.io"
+              aria-label="Source Code"
+              external
+              class="flex items-center gap-2">
+              <GithubSvg class="size-[14px]" /> Source Code
+            </Link>
+          </li>
+        </ul>
+      </div>
       <div>
         <h3 class="mb-2 font-bold">Hit me up</h3>
         <ul>
@@ -89,91 +65,162 @@ const linkedin = SOCIALS.find((SOCIAL) => SOCIAL.NAME === 'Linkedin')!;
         </ul>
       </div>
       <div>
-        <h3 class="mb-2 font-bold">Extra Stuff</h3>
-        <ul>
-          <li>
-            <Link href="/one-page.pdf" aria-label="One Page Resume" external>
-              One Page Resume
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div>
         <h3 class="mb-2 font-bold">Theme</h3>
         <ul>
           <li>
             <button
-              id="light-theme-button"
               aria-label="Light theme"
-              class="flex items-center gap-2 transition-colors duration-300 ease-in-out hover:text-black hover:dark:text-white">
+              class="light-theme-btn flex items-center gap-2 transition-colors duration-300 ease-in-out hover:text-black hover:dark:text-white">
               <BrightnessHigh class="size-[14px]" /> Light
             </button>
           </li>
           <li>
             <button
-              id="dark-theme-button"
               aria-label="Dark theme"
-              class="flex items-center gap-2 transition-colors duration-300 ease-in-out hover:text-black hover:dark:text-white">
+              class="dark-theme-btn flex items-center gap-2 transition-colors duration-300 ease-in-out hover:text-black hover:dark:text-white">
               <MoonSvg class="size-[14px]" /> Dark
             </button>
           </li>
           <li>
             <button
-              id="system-theme-button"
               aria-label="System theme"
-              class="flex items-center gap-2 transition-colors duration-300 ease-in-out hover:text-black hover:dark:text-white">
+              class="system-theme-btn flex items-center gap-2 transition-colors duration-300 ease-in-out hover:text-black hover:dark:text-white">
               <DisplaySvg class="size-[14px]" /> System
             </button>
           </li>
         </ul>
       </div>
     </div>
-    <div class="text-center">
+
+    <div class="mt-10 text-center">
       <SeparatedList values={['© 2025', 'Mitch Rosenburg']} separator=" | " />
     </div>
   </Container>
 </footer>
+<div
+  id="floating-footer"
+  class={cn(
+    'animate py-3 text-sm text-black/35 dark:text-white/35',
+    'fixed left-0 right-0 bottom-0 z-50',
+    'bg-stone-200/25 dark:bg-stone-900/25',
+    'saturate-200 backdrop-blur-sm'
+  )}>
+  <Container>
+    <div class="flex items-center justify-evenly">
+      <div class="flex justify-center gap-4">
+        <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`} external>
+          <EnvelopeSvg class="size-[18px]" />
+        </Link>
+        <Link href={github.HREF} aria-label={`${SITE.NAME} on ${github.NAME}`} external>
+          <GithubSvg class="size-[18px]" />
+        </Link>
+        <Link href={linkedin.HREF} aria-label={`${SITE.NAME} on ${linkedin.NAME}`} external>
+          <LinkedinSvg class="size-[18px]" />
+        </Link>
+      </div>
+
+      <div class="flex justify-end gap-4">
+        <button
+          aria-label="Light theme"
+          class="light-theme-btn transition-colors duration-300 ease-in-out hover:text-black hover:dark:text-white">
+          <BrightnessHigh class="size-[18px]" />
+        </button>
+        <button
+          aria-label="Dark theme"
+          class="dark-theme-btn transition-colors duration-300 ease-in-out hover:text-black hover:dark:text-white">
+          <MoonSvg class="size-[18px]" />
+        </button>
+        <button
+          aria-label="System theme"
+          class="system-theme-btn transition-colors duration-300 ease-in-out hover:text-black hover:dark:text-white">
+          <DisplaySvg class="size-[18px]" />
+        </button>
+      </div>
+    </div>
+  </Container>
+</div>
 <script is:inline>
   (() => {
     function init() {
       const footer = document.querySelector('footer');
+      const footerHeight = footer.getBoundingClientRect().height;
 
-      let scrollTop = 0;
-      let scrollTimeout = null;
+      const floatingFooter = document.getElementById('floating-footer');
+      const floatingFooterHeight = floatingFooter.getBoundingClientRect().height;
 
-      if (footer) footer.style.bottom = `0px`;
-
-      function handleScroll() {
-        clearTimeout(scrollTimeout);
-
-        const prevScrollTop = scrollTop;
-        scrollTop = document.documentElement.scrollTop;
-        const scrollBottom =
-          document.documentElement.scrollHeight - document.documentElement.clientHeight - scrollTop;
-
-        if (scrollTop > 100 && scrollBottom > 100) {
-          const scrollDiff = scrollTop - prevScrollTop;
-
-          console.log({ scrollTop, scrollBottom, scrollDiff });
-          if (Math.abs(scrollDiff) > 20) {
-            if (footer) footer.style.bottom = `-${footer.getBoundingClientRect().height}px`;
-          }
-          scrollTimeout = setTimeout(() => {
-            if (footer) footer.style.bottom = `0px`;
-          }, 750);
+      function adjustFloatingFooter() {
+        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+        if (scrollHeight - clientHeight - scrollTop > footerHeight) {
+          floatingFooter.style.bottom = `0px`;
         } else {
-          if (footer) footer.style.bottom = `0px`;
+          floatingFooter.style.bottom = `-${floatingFooterHeight}px`;
         }
       }
 
-      handleScroll();
+      applyTheme();
+      adjustFloatingFooter();
 
-      document.addEventListener('scroll', handleScroll, { passive: true });
+      document.querySelectorAll('.light-theme-btn').forEach((btn) => {
+        btn.addEventListener('click', () => applyTheme('light'));
+      });
+
+      document.querySelectorAll('.dark-theme-btn').forEach((btn) => {
+        btn.addEventListener('click', () => applyTheme('dark'));
+      });
+
+      document.querySelectorAll('.system-theme-btn').forEach((btn) => {
+        btn.addEventListener('click', () => applyTheme('system'));
+      });
+
+      document.addEventListener('scroll', adjustFloatingFooter, { passive: true });
+      window.addEventListener('resize', adjustFloatingFooter, { passive: true });
 
       return () => {
-        document.removeEventListener('scroll', handleScroll);
+        document.removeEventListener('scroll', adjustFloatingFooter);
+        window.removeEventListener('resize', adjustFloatingFooter);
       };
     }
+
+    let theme = null;
+    function applyTheme(themeToApply) {
+      theme = themeToApply;
+      if (!theme) {
+        theme = localStorage.getItem('theme') ?? 'system';
+      } else {
+        localStorage.setItem('theme', theme);
+      }
+
+      const css = document.createElement('style');
+
+      css.appendChild(
+        document.createTextNode(
+          `* {
+             -webkit-transition: none !important;
+             -moz-transition: none !important;
+             -o-transition: none !important;
+             -ms-transition: none !important;
+             transition: none !important;
+          }
+        `
+        )
+      );
+
+      document.head.appendChild(css);
+
+      if (
+        theme === 'dark' ||
+        (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      window.getComputedStyle(css).opacity;
+      document.head.removeChild(css);
+    }
+
+    applyTheme();
 
     let teardown = null;
     document.addEventListener('astro:page-load', () => {

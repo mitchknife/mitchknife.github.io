@@ -23,21 +23,8 @@ body {
   @apply text-black/75 dark:text-white/75;
 }
 
-header {
-  @apply fixed left-0 right-0 top-0 z-50 py-5;
-  @apply bg-stone-100/75 dark:bg-stone-900/25;
-  @apply saturate-200 backdrop-blur-sm;
-}
-
 main {
   @apply flex-1 py-32;
-}
-
-footer {
-  /* @apply text-sm py-5; */
-  /* @apply fixed left-0 right-0 bottom-0 z-50 py-3; */
-  /* @apply bg-stone-100/75 dark:bg-stone-900/25; */
-  /* @apply saturate-200 backdrop-blur-sm; */
 }
 
 article {
